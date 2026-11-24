@@ -1,0 +1,14 @@
+# dsh-multi-role-flow bundle patch
+# 只做一件事：给 skill 注册表增加一个 filesystem 提供方，扫描本包自带的 skills/ 目录。
+# 用独立 providerName 与 includeDefaultRoots:false，避免和 preset 的 skill-filesystem 冲突。
+# 依赖：Loader 提供的 baseUrl（与 shipped preset 同一写法）；包被 pnpm 装到
+#      <profile>/node_modules/dsh-multi-role-flow/。
+# 不要改成读进程环境变量：Loader 求值环境里那些变量不可靠（实测 undefined），baseUrl 才是稳定写法。
+- insert:
+    - id: multi-role-flow-skills
+      name: '@deepseek-ai/dsh-skill-filesystem'
+      config:
+        providerName: multi-role-flow
+        includeDefaultRoots: false
+        customSkillDirs:
+          - !!js "process.getBuiltinModule('node:path').join(process.getBuiltinModule('node:path').dirname(process.getBuiltinModule('node:module').createRequire(baseUrl).resolve('dsh-multi-role-flow/package.json')), 'skills')"

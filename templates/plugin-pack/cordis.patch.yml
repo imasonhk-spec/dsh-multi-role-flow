@@ -1,0 +1,9 @@
+# {{PACK_NAME}} bundle patch：向 Loader roster 插入本 bundle 行
+# （宿主半 index.js + 浏览器半 client.js 由此被加载）。
+# 安装走 profile 的 dsh.profile.bundles；不要在 profile patch 里重复插入同名 id
+# （重名会让 Loader 崩溃）。`id` 用短 id，`name` 用 package.json 的包名。
+
+- insert:
+    - id: {{PACK_ID}}
+      name: '{{PACK_NAME}}'
+      config: {}

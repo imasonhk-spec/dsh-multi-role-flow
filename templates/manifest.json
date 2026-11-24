@@ -1,0 +1,69 @@
+{
+  "schema": "dsh-flow/candidate@1",
+  "feature": "{{FEATURE}}",
+  "candidate": "C001",
+  "project": "{{PROJECT}}",
+  "created_at": "{{CREATED_AT_ISO8601_TZ}}",
+  "frozen_by": "executor",
+  "base": {
+    "type": "copy",
+    "path": "{{DEV_DIR}}",
+    "baseline_ref": "baseline.json"
+  },
+  "artifacts": [
+    {
+      "path": "{{ARTIFACT_RELATIVE_PATH}}",
+      "sha256": "{{SHA256_LOWER_HEX_64}}",
+      "bytes": 0,
+      "role": "source"
+    }
+  ],
+  "install_order": [
+    "{{ARTIFACT_RELATIVE_PATH}}"
+  ],
+  "restart_targets": [
+    "{{RESTART_TARGET}}"
+  ],
+  "rollback": {
+    "preserve": [
+      "{{PRESERVE_PATH}}"
+    ],
+    "restore_from": "previous_candidate",
+    "steps": [
+      "{{ROLLBACK_STEP}}"
+    ]
+  },
+  "evidence": [
+    {
+      "check_id": "{{CHECK_ID}}",
+      "file": "docs/{{FEATURE}}/evidence/C001/{{CHECK_ID}}.md",
+      "sha256": "{{EVIDENCE_SHA256_LOWER_HEX_64}}",
+      "grade": "B",
+      "result": "pass",
+      "note": "{{EVIDENCE_NOTE}}"
+    }
+  ],
+  "checks": {
+    "new": [
+      "{{CHECK_ID}}"
+    ],
+    "reused": [
+      {
+        "check_id": "{{REUSED_CHECK_ID}}",
+        "from_candidate": "{{FROM_CANDIDATE}}",
+        "reason": "{{REUSE_REASON}}"
+      }
+    ]
+  },
+  "gate": {
+    "status": "ready",
+    "blocked_by": []
+  },
+  "runtime": {
+    "kind": "plugin",
+    "version": "{{RUNTIME_VERSION}}",
+    "health_url": "{{HEALTH_URL}}",
+    "requires_restart": true
+  },
+  "seal_required": true
+}

@@ -1,0 +1,50 @@
+{
+  "name": "{{PACK_NAME}}",
+  "version": "{{PACK_VERSION}}",
+  "private": true,
+  "type": "module",
+  "description": "{{PACK_DESC}}",
+  "main": "./index.js",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "cordis.patch.yml",
+    "icon.svg",
+    "scripts/",
+    "README.md",
+    "package.json"
+  ],
+  "icon": "./icon.svg",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true
+    },
+    "capabilityPack": {
+      "id": "{{PACK_ID}}",
+      "title": "{{PACK_TITLE}}",
+      "description": "{{PACK_DESC}}",
+      "entryKey": "{{PACK_ENTRY_KEY}}",
+      "order": {{PACK_ORDER}},
+      "icon": "{{PACK_ICON}}",
+      "category": "{{PACK_CATEGORY}}",
+      "version": "v{{PACK_VERSION}}",
+      "tags": [
+        "{{PACK_TITLE}}"
+      ],
+      "subs": [],
+      "openEvent": "{{PACK_OPEN_EVENT}}",
+      "openEventAliases": [
+        "{{PACK_OPEN_EVENT}}"
+      ]
+    }
+  }
+}

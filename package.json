@@ -1,0 +1,30 @@
+{
+  "name": "dsh-multi-role-flow",
+  "version": "1.2.6",
+  "private": false,
+  "type": "module",
+  "description": "DSH 多角色协作开发流程：角色说明书 / 模板 / 状态机工具 + dsh-multi-role-flow 技能（安装后技能目录可见）",
+  "files": [
+    "cordis.patch.yml",
+    "skills/",
+    "roles/",
+    "templates/",
+    "tools/",
+    "ops/",
+    "workflow/",
+    "README.md",
+    "MIGRATION.md",
+    "ROADMAP.md",
+    "GLOSSARY.md"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/imasonhk-spec/dsh-multi-role-flow.git"
+  },
+  "license": "MIT"
+}
